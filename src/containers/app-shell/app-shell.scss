@@ -1,0 +1,36 @@
+.app-container {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 64px 1fr;
+  grid-template-areas: 
+    "header"
+    "main";
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.mdc-toolbar {
+  box-shadow: 0px 2px 4px rgba(0,0,0,0.4);
+  background-color: var(--mdc-theme-toolbar);
+  grid-area: header;
+  -webkit-app-region: drag;
+}
+
+.mdc-tab-bar {
+  margin: 0;
+  height: 64px;
+}
+
+.mdc-tab a {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.route-container {
+  grid-area: main;
+  overflow: hidden;
+}

@@ -1,0 +1,46 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  overflow: auto;
+  --mdc-theme-primary: #8b94ab;
+  --mdc-theme-toolbar: #353841;
+  --mdc-theme-accent: #292c33;
+  --mdc-theme-accent-dark: #22252b;
+  --mdc-theme-text-primary-on-light: #212121;
+  --mdc-theme-text-secondary-on-light: #616161;
+  --mdc-theme-text-primary-on-primary: var(--mdc-theme-primary);
+
+  background: var(--mdc-theme-accent);
+}
+
+#root {
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+input, button, textarea, :focus {
+  outline: none;
+}
+
+pre {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 12px;
+}
+
+.mdc-card {
+  background: var(--mdc-theme-accent-dark);
+}

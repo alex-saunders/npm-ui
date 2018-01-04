@@ -1,0 +1,51 @@
+{
+  "name": "npm-ui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "webpack-watch": "webpack -w",
+    "dev": "concurrently \"npm start\" \"npm run webpack-watch\""
+  },
+  "repository": "",
+  "keywords": [
+    "Electron"
+  ],
+  "author": "Alex Saunders",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "concurrently": "^3.5.1",
+    "css-loader": "^0.28.7",
+    "electron": "~1.7.8",
+    "electron-reload": "^1.2.2",
+    "postcss-loader": "^2.0.9",
+    "redux-logger": "^3.0.6",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.19.1",
+    "webpack": "^3.10.0",
+    "webpack-dashboard": "^1.0.2"
+  },
+  "dependencies": {
+    "ansi-html": "0.0.7",
+    "ansi-to-html": "^0.6.3",
+    "ansi-to-react": "^2.0.6",
+    "execa": "^0.8.0",
+    "express": "^4.16.2",
+    "material-components-web": "^0.27.0",
+    "node-sass": "^4.7.2",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-redux": "^5.0.6",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "read-pkg-up": "^3.0.0",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0",
+    "rmwc": "0.0.1-rc12"
+  }
+}
