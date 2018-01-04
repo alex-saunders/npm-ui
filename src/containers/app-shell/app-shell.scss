@@ -1,3 +1,5 @@
+@import '../../theme';
+
 .app-container {
   display: grid;
   grid-template-columns: 100%;
@@ -12,7 +14,7 @@
 
 .mdc-toolbar {
   box-shadow: 0px 2px 4px rgba(0,0,0,0.4);
-  background-color: var(--mdc-theme-toolbar);
+  background-color: $primary-1;
   grid-area: header;
   -webkit-app-region: drag;
 }
@@ -20,6 +22,8 @@
 .mdc-tab-bar {
   margin: 0;
   height: 64px;
+
+  --mdc-theme-text-primary-on-primary: $accent;
 }
 
 .mdc-tab a {

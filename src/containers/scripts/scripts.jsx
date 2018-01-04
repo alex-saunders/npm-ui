@@ -13,6 +13,8 @@ import { Icon } from 'rmwc/Icon'
 import { Card } from 'rmwc/Card';
 import { Typography } from 'rmwc/Typography';
 
+import { Panel, ScrollingContent } from '../../components/panel/panel';
+
 import './scripts.scss';
 
 class ScriptsView extends React.Component {
@@ -83,46 +85,53 @@ class ScriptsView extends React.Component {
     return (
       <div className='grid'>
         <div className='grid-item'>
-          <Card>
-            <div className='list-container'>
-            {Object.keys(this.state.scripts).length > 0 ? 
-            Object.keys(this.state.scripts).map((script, index) => {
-              return (
-                <Button key={index} className='list-item list-item--icon' onClick={(e) => {this.execCommand(script)}}>
-                  <div className='list-action'>
-                  <Icon use="play_arrow" />
-                  </div>
-                  <div className='list-text'>
-                    <span className='list-text--title'>{script}</span>
-                    <span className='list-text--detail'>{this.state.scripts[script]}</span>
-                  </div>
-                </Button>
-              )
-            })
-            :
-            ''
-          }
-            </div>
-          </Card>
+          <Panel>
+            <Card>
+              <ScrollingContent className='list-container'>
+              {
+                Object.keys(this.state.scripts).length > 0 ? 
+                Object.keys(this.state.scripts).map((script, index) => {
+                  return (
+                    <Button key={index} className='list-item list-item--icon' onClick={(e) => {this.execCommand(script)}}>
+                      <div className='list-action'>
+                      <Icon use="play_arrow" />
+                      </div>
+                      <div className='list-text'>
+                        <span className='list-text--title'>{script}</span>
+                        <span className='list-text--detail'>{this.state.scripts[script]}</span>
+                      </div>
+                    </Button>
+                  )
+                })
+                :
+                ''
+              }
+              </ScrollingContent>
+            </Card>
+          </Panel>
           </div>
           <div className="grid-item">
-            <div className='list-container'>
-              <div className="list-item">
-          <Typography use="title" className="title">Terminal</Typography>
-            <Button raised className="restart-button" onClick={this.props.restartShell}>
-              RESTART
-            </Button>
-            </div>
-            </div>
-            <Card className="shell-output--container">
-            <div className="shell-output" ref={(div) => { this.scrollingShellOutput = div; }}>
-              <pre ref={(pre) => { this.shellOutput = pre; }}>
-                {this.props.shellOutput.map((shellOutputLine, index) => {
-                  return <div key={index}><span dangerouslySetInnerHTML={this.createMarkup(shellOutputLine)}/><br/></div>
-                })}
-              </pre>
+            <Panel fullHeight>
+              <div className='list-container'>
+                <div className="list-item">
+                  <Typography use="title" className="grid-item--title">Terminal</Typography>
+                  <Button raised className="restart-button" onClick={this.props.restartShell}>
+                    RESTART
+                  </Button>
+                </div>
               </div>
-            </Card>
+              <Panel fullHeight>
+                <Card>
+                  <ScrollingContent className="shell-output" ref={(div) => { this.scrollingShellOutput = div; }}>
+                    <pre ref={(pre) => { this.shellOutput = pre; }}>
+                      {this.props.shellOutput.map((shellOutputLine, index) => {
+                        return <div key={index}><span dangerouslySetInnerHTML={this.createMarkup(shellOutputLine)}/><br/></div>
+                      })}
+                    </pre>
+                  </ScrollingContent>
+                </Card>
+              </Panel>
+          </Panel>
         </div>
       </div>
     )

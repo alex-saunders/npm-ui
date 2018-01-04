@@ -1,0 +1,15 @@
+.panel-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.panel--growingHeight {
+  flex: 0 1 auto;
+}
+.panel--fullHeight {
+  flex: 1;
+}
+.panel--scrollingContent {
+  height: 100%;
+  overflow: auto;
+}

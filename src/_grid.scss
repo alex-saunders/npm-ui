@@ -1,0 +1,19 @@
+.grid {
+  height: 100%;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+  grid-template-rows: 1fr;
+}
+
+.grid > .grid-item {
+  display: flex;
+  flex-direction: column;
+  margin: 0 8px;
+  overflow: hidden;
+  padding: 16px 8px;
+}
+
+.grid-item--title {
+  color: $accent;
+}

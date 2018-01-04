@@ -1,22 +1,5 @@
-.grid {
-  height: 100%;
-  overflow: hidden;
-  display: grid;
-  grid-template-columns: repeat(2, 50%);
-  grid-template-rows: 1fr;
-}
-
-.grid > .grid-item {
-  display: flex;
-  flex-direction: column;
-  margin: 0 8px;
-  overflow: hidden;
-  padding: 16px 8px;
-}
-
-.title {
-  color: var(--mdc-theme-primary);
-}
+@import '../../theme';
+@import '../../grid';
 
 .list-container {
   margin: 8px 0;
@@ -72,15 +55,11 @@
   text-overflow: ellipsis;
 }
 
-.shell-output--container {
-  flex: 1;
-}
-
 .shell-output {
   height: 100%;
   overflow: auto;
   background: #212121;
-  color: var(--mdc-theme-primary);
+  color: $accent;
   padding: 8px 8px;
 
   & pre {
@@ -92,6 +71,11 @@
   }
 }
 
+.mdc-card .mdc-button {
+  --mdc-theme-primary: $accent;
+}
+
 .mdc-button.restart-button {
-  background-color: var(--mdc-theme-accent-dark);
+  background-color: $primary-3;
+  --mdc-theme-text-primary-on-primary: $accent;
 }
