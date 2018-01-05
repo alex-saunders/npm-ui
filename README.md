@@ -15,7 +15,7 @@ Currently, in development mode you can only see scripts that are located within 
 
 ## Contributing
 
-Please see the issues page for a current list of what needs to be done and please feel free to get working on anything you see, as well as adding your own bug reports/feature requests!
+Please see the issues page for a current list of what needs to be done and feel free to get working on anything you see, as well as adding your own bug reports/feature requests, everyone is welcome!
 
 ## License
 
