@@ -1,6 +1,12 @@
 export default {
     scriptsInitialState: {
-        currentScript: null,
+        processes: [
+            {
+                label: '1: bash',
+                output: []
+            }
+        ],
+        currentProcess: 0,
         shellOutput: []
     }
 }

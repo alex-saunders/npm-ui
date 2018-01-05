@@ -6,7 +6,8 @@
   "scripts": {
     "start": "electron .",
     "webpack-watch": "webpack -w",
-    "dev": "concurrently \"npm start\" \"npm run webpack-watch\""
+    "dev": "concurrently \"npm start\" \"npm run webpack-watch\"",
+    "test": "ls -al"
   },
   "repository": "",
   "keywords": [
@@ -17,6 +18,7 @@
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "concurrently": "^3.5.1",

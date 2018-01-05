@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import { updateShellOutput, updateCurrentScript, restartShell } from '../../actions/scripts-actions';
+import { updateShellOutput, updateCurrentScript, restartShell, addProcess, changeProcess } from '../../actions/scripts-actions';
 
 import readPkg from 'read-pkg-up';
 
@@ -12,8 +12,10 @@ import { Button } from 'rmwc/Button';
 import { Icon } from 'rmwc/Icon'
 import { Card } from 'rmwc/Card';
 import { Typography } from 'rmwc/Typography';
+import { Select } from 'rmwc/Select';
 
 import { Panel, ScrollingContent } from '../../components/panel/panel';
+import IconButton from '../../components/icon-button/icon-button';
 
 import './scripts.scss';
 
@@ -49,7 +51,10 @@ class ScriptsView extends React.Component {
   }
 
   execCommand(script) {
-    this.props.updateCurrentScript(script);
+    this.props.updateCurrentScript({
+      script: script,
+      process: this.props.currentProcess
+    });
   }
 
   async fetchScripts() {
@@ -75,13 +80,20 @@ class ScriptsView extends React.Component {
   }
 
   componentDidUpdate() {
-    const scroll = this.shellOutput.offsetHeight - this.scrollingShellOutput.offsetHeight;
-    if (scroll > 0) {
-      this.scrollingShellOutput.scrollTop = scroll;
-    }
+    this.scrollingShellOutput.scrollToBottom();
+  }
+
+  changeProcess = (e) => {
+    console.log(e.target.value);
+    this.props.changeProcess(e.target.value);
   }
 
   render() {
+    const selectOptions = this.props.processes.map((process, index) => { 
+        return { label: process.label, value: index} 
+      }
+    )
+
     return (
       <div className='grid'>
         <div className='grid-item'>
@@ -114,17 +126,31 @@ class ScriptsView extends React.Component {
             <Panel fullHeight>
               <div className='list-container'>
                 <div className="list-item">
-                  <Typography use="title" className="grid-item--title">Terminal</Typography>
-                  <Button raised className="restart-button" onClick={this.props.restartShell}>
-                    RESTART
-                  </Button>
+                  <Select
+                    label="Process"
+                    options={selectOptions}
+                    value={`${this.props.currentProcess}`}
+                    onChange={this.changeProcess}
+                    className="shell-select"
+                  />
+                  <div className="list-item--rightActions">
+                    <IconButton raised onClick={this.props.addProcess}>
+                      <svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+                    </IconButton>
+                    <IconButton raised>
+                      <svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+                    </IconButton>
+                    <IconButton raised onClick={this.props.restartShell}>
+                      <svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+                    </IconButton>
+                  </div>
                 </div>
               </div>
               <Panel fullHeight>
                 <Card>
                   <ScrollingContent className="shell-output" ref={(div) => { this.scrollingShellOutput = div; }}>
                     <pre ref={(pre) => { this.shellOutput = pre; }}>
-                      {this.props.shellOutput.map((shellOutputLine, index) => {
+                      {this.props.processes[this.props.currentProcess].output.map((shellOutputLine, index) => {
                         return <div key={index}><span dangerouslySetInnerHTML={this.createMarkup(shellOutputLine)}/><br/></div>
                       })}
                     </pre>
@@ -146,6 +172,8 @@ ScriptsView.propTypes = {
 function mapStateToProps(state) {
   return {
     shellOutput: state.scripts.shellOutput,
+    processes: state.scripts.processes,
+    currentProcess: state.scripts.currentProcess,
   };
 }
 
@@ -154,6 +182,8 @@ function matchDispatchToProps(dispatch) {
     updateShellOutput: (output) => { dispatch(updateShellOutput(output)); },
     updateCurrentScript: (script) => { dispatch(updateCurrentScript(script)); },
     restartShell: () => { dispatch(restartShell()); },
+    addProcess: () => { dispatch(addProcess()); },
+    changeProcess: (index) => { dispatch(changeProcess(index)); },
   };
 }
 

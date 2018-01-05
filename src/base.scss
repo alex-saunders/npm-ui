@@ -14,7 +14,6 @@ html {
 
 body {
   overflow: auto;
-  background: $primary-2;
 }
 
 *, *:before, *:after {
@@ -27,7 +26,8 @@ input, button, textarea, :focus {
   outline: none;
 }
 
-pre {
+pre * {
+  user-select: text;
   font-family: 'Roboto Mono', monospace;
   font-size: 12px;
 }
