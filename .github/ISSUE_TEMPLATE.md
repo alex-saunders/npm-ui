@@ -1,5 +1,5 @@
-* [] bug
-* [] feature
+* [x] bug
+* [ ] feature
 
 ## Current Situation
 
