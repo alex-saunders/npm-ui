@@ -1,7 +1,9 @@
-@import './partials/theme';
+@import './partials/variables';
 
 :global {
   @import "~material-components-web/dist/material-components-web";
+  @import './partials/grid';
+  @import './theme';
   
   html, body {
     margin: 0;
@@ -33,10 +35,5 @@
   pre {
     font-family: 'Roboto Mono', monospace;
     font-size: 12px;
-  }
-
-  .mdc-card {
-    height: 100%;
-    background: $primary-3;
   }
 }
