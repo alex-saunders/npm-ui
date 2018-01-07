@@ -1,6 +1,6 @@
 @import '../assets/css/partials/theme';
 
-.app-container {
+.appContainer {
   display: grid;
   grid-template-columns: 100%;
   grid-template-rows: 64px 1fr;
@@ -34,7 +34,7 @@
   bottom: 0;
 }
 
-.route-container {
+.routeContainer {
   grid-area: main;
   overflow: hidden;
 }

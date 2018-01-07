@@ -1,38 +1,42 @@
 @import './partials/theme';
 
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100vh;
-  width: 100vw;
-  overflow: hidden;
-}
+:global {
+  @import "~material-components-web/dist/material-components-web";
+  
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+  }
 
-html {
-  box-sizing: border-box;
-}
+  html {
+    box-sizing: border-box;
+  }
 
-body {
-  overflow: auto;
-  background: $primary-2;
-}
+  body {
+    overflow: auto;
+    background: $primary-2;
+  }
 
-*, *:before, *:after {
-  box-sizing: inherit;
-  -webkit-user-select: none;
-  user-select: none;
-}
+  *, *:before, *:after {
+    box-sizing: inherit;
+    -webkit-user-select: none;
+    user-select: none;
+  }
 
-input, button, textarea, :focus {
-  outline: none;
-}
+  input, button, textarea, :focus {
+    outline: none;
+  }
 
-pre {
-  font-family: 'Roboto Mono', monospace;
-  font-size: 12px;
-}
+  pre {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 12px;
+  }
 
-.mdc-card {
-  height: 100%;
-  background: $primary-3;
+  .mdc-card {
+    height: 100%;
+    background: $primary-3;
+  }
 }
