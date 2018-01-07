@@ -17,7 +17,7 @@ import { Panel, ScrollingContent } from '../../components/panel/panel';
 
 import './scripts.scss';
 
-class ScriptsView extends React.Component {
+export class ScriptsView extends React.Component {
   constructor(props) {
     super(props);
 

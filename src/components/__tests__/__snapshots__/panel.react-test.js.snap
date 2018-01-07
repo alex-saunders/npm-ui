@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Panel should render 1`] = `
+<div
+  className="some-class-name panel-body panel--fullHeight"
+>
+  Content
+</div>
+`;
+
+exports[`ScrollingContent should render 1`] = `
+<div
+  className="some-class-name panel--scrollingContent"
+>
+  Content
+</div>
+`;

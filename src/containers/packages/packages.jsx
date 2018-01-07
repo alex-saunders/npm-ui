@@ -1,6 +1,6 @@
 import React from 'react';
 
-class PackagesView extends React.Component {
+export class PackagesView extends React.Component {
 
   render() {
     return (

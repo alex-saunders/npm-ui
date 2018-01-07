@@ -9,7 +9,7 @@ import PackagesView from '../packages/packages';
 
 import './app-shell.scss'
 
-class AppShell extends React.Component {
+export class AppShell extends React.Component {
   constructor(props) {
     super(props);
 
