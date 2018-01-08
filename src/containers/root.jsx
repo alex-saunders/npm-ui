@@ -7,7 +7,7 @@ import { TabBar, Tab } from "rmwc/Tabs";
 import ScriptsView from "./Scripts";
 import PackagesView from "./Packages";
 
-import "./styles.scss";
+import styles from "./styles.scss";
 
 export class Root extends React.Component {
   constructor(props) {
@@ -20,7 +20,7 @@ export class Root extends React.Component {
 
   render() {
     return (
-      <div className="app-container">
+      <div className={styles.appContainer}>
         <Toolbar>
           <ToolbarRow>
             <TabBar
@@ -44,7 +44,7 @@ export class Root extends React.Component {
         <Route
           path="/scripts"
           render={() => (
-            <div className="route-container">
+            <div className={styles.routeContainer}>
               <ScriptsView />
             </div>
           )}
@@ -52,7 +52,7 @@ export class Root extends React.Component {
         <Route
           path="/packages"
           render={() => (
-            <div className="route-container">
+            <div className={styles.routeContainer}>
               <PackagesView />
             </div>
           )}

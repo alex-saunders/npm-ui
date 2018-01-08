@@ -1,5 +1,6 @@
 const webpack = require("webpack");
 const DashboardPlugin = require("webpack-dashboard/plugin");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
   entry: {
@@ -19,23 +20,21 @@ module.exports = {
       },
       {
         test: /\.(css|scss)$/,
-        loader: [
-          {
-            loader: "style-loader"
-          },
-          {
-            loader: "css-loader"
-          },
-          {
-            loader: "postcss-loader",
-            options: {
-              plugins: []
-            }
-          },
-          {
-            loader: "sass-loader"
-          }
-        ]
+        loader: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: [
+            {
+              loader: "css-loader",
+              query: {
+                modules: true,
+                sourceMap: true,
+                importLoaders: 2,
+                localIdentName: "[name]__[local]___[hash:base64:5]"
+              }
+            },
+            "sass-loader"
+          ]
+        })
       }
     ]
   },
@@ -44,6 +43,8 @@ module.exports = {
   },
   plugins: [
     //new webpack.optimize.UglifyJsPlugin(),
+    new ExtractTextPlugin("style.css"),
+
     new DashboardPlugin()
   ],
   resolve: {

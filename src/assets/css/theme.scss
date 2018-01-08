@@ -1,0 +1,39 @@
+@import './partials/variables';
+
+
+.mdc-card .mdc-button {
+    --mdc-theme-primary: $accent;
+}
+    
+.mdc-button.restart-button {
+    background-color: $primary-3;
+    --mdc-theme-text-primary-on-primary: $accent;
+}
+
+
+.mdc-toolbar {
+    box-shadow: 0px 2px 4px rgba(0,0,0,0.4);
+    background-color: $primary-1;
+    grid-area: header;
+    -webkit-app-region: drag;
+}
+
+.mdc-tab-bar {
+    margin: 0;
+    height: 64px;
+
+    --mdc-theme-text-primary-on-primary: $accent;
+}
+
+.mdc-tab a {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.mdc-card {
+height: 100%;
+background: $primary-3;
+}

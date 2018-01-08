@@ -1,11 +1,11 @@
-@import '../../assets/css/partials/theme';
+@import '../../assets/css/partials/variables';
 @import '../../assets/css/partials/grid';
 
-.list-container {
+.listContainer {
   margin: 8px 0;
 }
 
-.list-item {
+.listItem {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -16,11 +16,11 @@
   padding: 0 8px;
 }
 
-.list-item--icon {
+.listItemIcon {
   padding: 0 16px 0 72px;
 }
 
-.list-action {
+.listAction {
   display: flex;
   align-items: center;
   position: absolute;
@@ -29,7 +29,7 @@
   left: 16px;
 }
 
-.list-text {
+.listText {
   padding: 8px 0;
   width: 100%;
   display: flex;
@@ -39,13 +39,13 @@
   text-align: left;
 }
 
-.list-text--title {
+.listTextTitle {
   font-size: 16px;
   line-height: 24px;
   width: 100%;
 }
 
-.list-text--detail {
+.listTextDetail {
   width: 100%;
   font-size: 12px;
   line-height: 16px;
@@ -55,27 +55,18 @@
   text-overflow: ellipsis;
 }
 
-.shell-output {
+.shellOutput {
   height: 100%;
   overflow: auto;
   background: #212121;
   color: $accent;
   padding: 8px 8px;
 
-  & pre {
+  pre {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     min-height: 100%;
     margin: 0;
   }
-}
-
-.mdc-card .mdc-button {
-  --mdc-theme-primary: $accent;
-}
-
-.mdc-button.restart-button {
-  background-color: $primary-3;
-  --mdc-theme-text-primary-on-primary: $accent;
 }

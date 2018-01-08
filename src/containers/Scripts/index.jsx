@@ -20,7 +20,7 @@ import { Typography } from "rmwc/Typography";
 import Panel from "../../components/Panel";
 import ScrollingContent from "../../components/ScrollingContent";
 
-import "./styles.scss";
+import styles from "./styles.scss";
 
 export class ScriptsView extends React.Component {
   constructor(props) {
@@ -93,23 +93,25 @@ export class ScriptsView extends React.Component {
         <div className="grid-item">
           <Panel>
             <Card>
-              <ScrollingContent className="list-container">
+              <ScrollingContent className={styles.listContainer}>
                 {Object.keys(this.state.scripts).length > 0
                   ? Object.keys(this.state.scripts).map((script, index) => {
                       return (
                         <Button
                           key={index}
-                          className="list-item list-item--icon"
+                          className={`${styles.listItem} ${styles.listItemIcon}`}
                           onClick={e => {
                             this.execCommand(script);
                           }}
                         >
-                          <div className="list-action">
+                          <div className={styles.listAction}>
                             <Icon use="play_arrow" />
                           </div>
-                          <div className="list-text">
-                            <span className="list-text--title">{script}</span>
-                            <span className="list-text--detail">
+                          <div className={styles.listText}>
+                            <span className={styles.listTextTitle}>
+                              {script}
+                            </span>
+                            <span className={styles.listTextDetail}>
                               {this.state.scripts[script]}
                             </span>
                           </div>
@@ -123,8 +125,8 @@ export class ScriptsView extends React.Component {
         </div>
         <div className="grid-item">
           <Panel fullHeight>
-            <div className="list-container">
-              <div className="list-item">
+            <div className={styles.listContainer}>
+              <div className={styles.listItem}>
                 <Typography use="title" className="grid-item--title">
                   Terminal
                 </Typography>
@@ -140,7 +142,7 @@ export class ScriptsView extends React.Component {
             <Panel fullHeight>
               <Card>
                 <ScrollingContent
-                  className="shell-output"
+                  className={styles.shellOutput}
                   ref={div => {
                     this.scrollingShellOutput = div;
                   }}
