@@ -2,15 +2,15 @@ import React from "react";
 import { shallow } from "enzyme";
 
 import { TabBar } from "rmwc/Tabs";
-import { AppShell } from "../app-shell/app-shell";
+import { Root } from "../root";
 
-test("AppShell should render", () => {
+test("Root should render", () => {
   const customClassName = "some-class-name";
-  const wrapper = shallow(<AppShell />);
+  const wrapper = shallow(<Root />);
 });
 
-test("AppShell should change the tab", () => {
-  const wrapper = shallow(<AppShell />);
+test("Root should change the tab", () => {
+  const wrapper = shallow(<Root />);
 
   // initial tab
   expect(wrapper.state("activeTabIndex")).toBe(0);

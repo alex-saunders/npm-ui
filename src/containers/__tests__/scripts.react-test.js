@@ -1,7 +1,7 @@
 import React from "react";
 import { shallow } from "enzyme";
 
-import { ScriptsView } from "../scripts/scripts";
+import { ScriptsView } from "../scripts";
 
 test("ScriptsView should render", () => {
   const wrapper = shallow(

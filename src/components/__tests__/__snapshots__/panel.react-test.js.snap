@@ -7,11 +7,3 @@ exports[`Panel should render 1`] = `
   Content
 </div>
 `;
-
-exports[`ScrollingContent should render 1`] = `
-<div
-  className="some-class-name panel--scrollingContent"
->
-  Content
-</div>
-`;

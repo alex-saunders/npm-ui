@@ -1,38 +1,38 @@
-import ScriptsExecutor from '../utils/scripts';
+import ScriptsExecutor from "../../utils/scripts";
 
 let currExecutor = null;
 
-export const updateShellOutput = (output) => {
+export const updateShellOutput = output => {
   return {
-    type: 'SHELL_OUTPUT',
+    type: "SHELL_OUTPUT",
     payload: output
-  }
-}
+  };
+};
 
 export const clearShellOutput = () => {
   return {
-    type: 'CLEAR_SHELL_OUTPUT',
-  }
-}
+    type: "CLEAR_SHELL_OUTPUT"
+  };
+};
 
-export const currentScript = (script) => {
+export const currentScript = script => {
   return {
-    type: 'SHELL_SCRIPT',
+    type: "SHELL_SCRIPT",
     payload: script
-  }
-}
+  };
+};
 
 export const restartShell = () => {
-  return (dispatch) => {
+  return dispatch => {
     if (currExecutor && currExecutor.process) {
       dispatch(clearShellOutput());
       currExecutor.closeProcess();
     }
-  }
-}
+  };
+};
 
-export const updateCurrentScript = (script) => {
-  return (dispatch) => {
+export const updateCurrentScript = script => {
+  return dispatch => {
     dispatch(currentScript(script));
 
     if (currExecutor && currExecutor.process) {
@@ -42,17 +42,17 @@ export const updateCurrentScript = (script) => {
 
     currExecutor = new ScriptsExecutor(script);
 
-    currExecutor.process.stdout.on('data', (data) => {
-      const lines = data.split('\n');
+    currExecutor.process.stdout.on("data", data => {
+      const lines = data.split("\n");
       dispatch(updateShellOutput(lines));
     });
-    
-    currExecutor.process.stderr.on('data', (data) => {
+
+    currExecutor.process.stderr.on("data", data => {
       dispatch(updateShellOutput([data]));
     });
-    
-    currExecutor.process.on('close', (code) => {
+
+    currExecutor.process.on("close", code => {
       dispatch(updateShellOutput([`child process exited with code ${code}`]));
     });
-  }
-}
+  };
+};
