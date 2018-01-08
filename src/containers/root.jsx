@@ -9,7 +9,7 @@ import PackagesView from "./Packages";
 
 import styles from "./styles.scss";
 
-class Root extends React.Component {
+export class Root extends React.Component {
   constructor(props) {
     super(props);
 
@@ -26,7 +26,8 @@ class Root extends React.Component {
             <TabBar
               activeTabIndex={this.state.activeTabIndex || 0}
               onChange={evt =>
-                this.setState({ activeTabIndex: evt.target.value })}
+                this.setState({ activeTabIndex: evt.target.value })
+              }
             >
               <Tab className="mdc-tab--active">
                 <Link to="/scripts" />
@@ -43,13 +44,17 @@ class Root extends React.Component {
         <Route
           path="/scripts"
           render={() => (
-            <div className={styles.routeContainer}><ScriptsView /></div>
+            <div className={styles.routeContainer}>
+              <ScriptsView />
+            </div>
           )}
         />
         <Route
           path="/packages"
           render={() => (
-            <div className={styles.routeContainer}><PackagesView /></div>
+            <div className={styles.routeContainer}>
+              <PackagesView />
+            </div>
           )}
         />
       </div>

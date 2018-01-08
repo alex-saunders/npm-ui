@@ -22,7 +22,7 @@ import ScrollingContent from "../../components/ScrollingContent";
 
 import styles from "./styles.scss";
 
-class ScriptsView extends React.Component {
+export class ScriptsView extends React.Component {
   constructor(props) {
     super(props);
 
