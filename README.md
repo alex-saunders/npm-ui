@@ -25,8 +25,8 @@ future).
 Run `npm test` to execute the full test-suite. The tests are implemented using
 [jest](https://facebook.github.io/jest/). The UI is tested by unit-testing each
 react component using [enzyme](http://airbnb.io/enzyme/). For now, the tests
-ensure that each component is shallow-rendering without trowing an error as well
-as the correct processing of UI events. Stateless components are also tested
+ensure that each component is shallow-rendering without throwing an error as well
+correctly processing UI events. Stateless components are also tested
 using snapshots.
 
 ## Contributing
