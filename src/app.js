@@ -11,7 +11,6 @@ import AppShell from './containers/app-shell/app-shell';
 
 import configureStore from './store/configure-store';
 
-
 const rootEl = document.getElementById('root');
 
 const store = configureStore();

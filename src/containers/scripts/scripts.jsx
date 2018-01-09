@@ -13,6 +13,7 @@ import { Icon } from 'rmwc/Icon'
 import { Card } from 'rmwc/Card';
 import { Typography } from 'rmwc/Typography';
 import { Select } from 'rmwc/Select';
+import { TextField } from 'rmwc/TextField'; 
 
 import { Panel, ScrollingContent } from '../../components/panel/panel';
 import IconButton from '../../components/icon-button/icon-button';
@@ -99,6 +100,8 @@ class ScriptsView extends React.Component {
         <div className='grid-item'>
           <Panel>
             <Card>
+              <TextField label="Write something..." />
+              <TextField label="Write something..." />
               <ScrollingContent className='list-container'>
               {
                 Object.keys(this.state.scripts).length > 0 ? 
