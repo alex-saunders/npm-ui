@@ -92,11 +92,7 @@ export class ScriptsView extends React.Component {
   }
 
   componentDidUpdate() {
-    const scroll =
-      this.shellOutput.offsetHeight - this.scrollingShellOutput.offsetHeight;
-    if (scroll > 0) {
-      this.scrollingShellOutput.scrollTop = scroll;
-    }
+    this.scrollingShellOutput.scrollToBottom();
   }
 
   render() {
