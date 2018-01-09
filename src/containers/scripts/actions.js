@@ -1,8 +1,8 @@
-import ScriptsExecutor from '../utils/scripts';
+import ScriptsExecutor from "../../utils/scripts";
 
 let currExecutor = null;
 
-export const updateShellOutput = (output) => {
+export const updateShellOutput = output => {
   return {
     type: 'SHELL_OUTPUT',
     payload: {
@@ -14,18 +14,18 @@ export const updateShellOutput = (output) => {
 
 export const clearShellOutput = () => {
   return {
-    type: 'CLEAR_SHELL_OUTPUT',
-  }
-}
+    type: "CLEAR_SHELL_OUTPUT"
+  };
+};
 
 export const restartShell = () => {
-  return (dispatch) => {
+  return dispatch => {
     if (currExecutor && currExecutor.process) {
       dispatch(clearShellOutput());
       currExecutor.closeProcess();
     }
-  }
-}
+  };
+};
 
 export const addProcess = () => {
   return {
@@ -79,5 +79,5 @@ export const updateCurrentScript = (script) => {
         process: script.process
       }));
     });
-  }
-}
+  };
+};

@@ -1,27 +1,25 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { MemoryRouter } from 'react-router'
+import React from "react";
+import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
+import { MemoryRouter } from "react-router";
 
-import 'material-components-web/dist/material-components-web.css';
+import "material-components-web/dist/material-components-web.css";
 
-import './base.scss';
+import "./assets/css/base.scss";
 
-import AppShell from './containers/app-shell/app-shell';
+import Root from "./containers/root";
 
-import configureStore from './store/configure-store';
+import configureStore from "./redux/configure-store";
 
-const rootEl = document.getElementById('root');
+const rootEl = document.getElementById("root");
 
 const store = configureStore();
 
 ReactDOM.render(
   <Provider store={store}>
-    <MemoryRouter
-      initialEntries={['/scripts']}  
-    >
-      <AppShell />
+    <MemoryRouter initialEntries={["/scripts"]}>
+      <Root />
     </MemoryRouter>
   </Provider>,
   rootEl
-)
+);
