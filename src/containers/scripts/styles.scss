@@ -1,4 +1,4 @@
-@import '../../assets/css/partials/theme';
+@import '../../assets/css/partials/variables';
 @import '../../assets/css/partials/grid';
 
 .list-container {
@@ -13,7 +13,7 @@
   position: relative;
   height: auto;
   width: 100%;
-  padding: 0 8px;
+  padding: 0 8px 0 0;
 }
 
 .list-item--icon {
@@ -55,6 +55,40 @@
   text-overflow: ellipsis;
 }
 
+.list-item--rightActions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  & > * {
+    margin-right: 8px;
+  }
+  & > *:last-child {
+    margin-right: 0;
+  }
+}
+
+:global(.mdc-select).shell-select {
+  flex: 1;
+  margin-right: 16px;
+  --mdc-theme-text-primary-on-light: $accent;
+  
+  :global(.mdc-select__surface) {
+    background: none;
+  }
+
+  :global(.mdc-select__label) {
+    color: $accent;
+  }
+  :global(.mdc-select__bottom-line) {
+    background-color: $primary-1;
+    --mdc-theme-primary: $primary-1;
+  }
+  :global(.mdc-list-item) {
+    --mdc-theme-text-primary-on-light: $primary-3;
+  }
+}
+
 .shell-output {
   height: 100%;
   overflow: auto;
@@ -78,4 +112,4 @@
 .mdc-button.restart-button {
   background-color: $primary-3;
   --mdc-theme-text-primary-on-primary: $accent;
-}
+} 

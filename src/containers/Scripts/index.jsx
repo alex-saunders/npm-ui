@@ -5,7 +5,9 @@ import { connect } from "react-redux";
 import {
   updateShellOutput,
   updateCurrentScript,
-  restartShell
+  restartShell,
+  addProcess,
+  changeProcess
 } from "./actions";
 
 import readPkg from "read-pkg-up";
@@ -16,13 +18,16 @@ import { Button } from "rmwc/Button";
 import { Icon } from "rmwc/Icon";
 import { Card } from "rmwc/Card";
 import { Typography } from "rmwc/Typography";
+import { Select } from 'rmwc/Select';
+import { TextField } from 'rmwc/TextField'; 
 
 import Panel from "../../components/Panel";
 import ScrollingContent from "../../components/ScrollingContent";
+import IconButton from '../../components/icon-button/icon-button';
 
-import "./styles.scss";
+import styles from "./styles.scss";
 
-class ScriptsView extends React.Component {
+export class ScriptsView extends React.Component {
   constructor(props) {
     super(props);
 
@@ -54,7 +59,14 @@ class ScriptsView extends React.Component {
   }
 
   execCommand(script) {
-    this.props.updateCurrentScript(script);
+    this.props.updateCurrentScript({
+      script: script,
+      process: this.props.currentProcess
+    });
+  }
+
+  changeProcess = (e) => {
+    this.props.changeProcess(e.target.value);
   }
 
   async fetchScripts() {
@@ -88,28 +100,37 @@ class ScriptsView extends React.Component {
   }
 
   render() {
+    const selectOptions = this.props.processes.map((process, index) => { 
+        return { label: process.label, value: index} 
+      }
+    )
+
     return (
-      <div className="grid">
-        <div className="grid-item">
+      <div className={styles["grid"]}>
+        <div className={styles["grid-item"]}>
           <Panel>
             <Card>
-              <ScrollingContent className="list-container">
+              <TextField label="Write something..." />
+              <TextField label="Write something..." />
+              <ScrollingContent className={styles.listContainer}>
                 {Object.keys(this.state.scripts).length > 0
                   ? Object.keys(this.state.scripts).map((script, index) => {
                       return (
                         <Button
                           key={index}
-                          className="list-item list-item--icon"
+                          className={`${styles["list-item"]} ${styles["list-item--icon"]}`}
                           onClick={e => {
                             this.execCommand(script);
                           }}
                         >
-                          <div className="list-action">
+                          <div className={styles["list-action"]}>
                             <Icon use="play_arrow" />
                           </div>
-                          <div className="list-text">
-                            <span className="list-text--title">{script}</span>
-                            <span className="list-text--detail">
+                          <div className={styles["list-text"]}>
+                            <span className={styles["list-text--title"]}>
+                              {script}
+                            </span>
+                            <span className={styles["list-text--detail"]}>
                               {this.state.scripts[script]}
                             </span>
                           </div>
@@ -121,46 +142,36 @@ class ScriptsView extends React.Component {
             </Card>
           </Panel>
         </div>
-        <div className="grid-item">
+        <div className={styles["grid-item"]}>
           <Panel fullHeight>
-            <div className="list-container">
-              <div className="list-item">
-                <Typography use="title" className="grid-item--title">
-                  Terminal
-                </Typography>
-                <Button
-                  raised
-                  className="restart-button"
-                  onClick={this.props.restartShell}
-                >
-                  RESTART
-                </Button>
+            <div className={styles["list-container"]}>
+              <div className={styles["list-item"]}>
+                <Select
+                  label="Process"
+                  options={selectOptions}
+                  value={`${this.props.currentProcess}`}
+                  onChange={this.changeProcess}
+                  className={styles["shell-select"]}
+                />
+                <div className={styles["list-item--rightActions"]}>
+                  <IconButton raised onClick={this.props.addProcess}>
+                    <svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+                  </IconButton>
+                  <IconButton raised>
+                    <svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+                  </IconButton>
+                  <IconButton raised onClick={this.props.restartShell}>
+                    <svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
+                  </IconButton>
+                </div>
               </div>
             </div>
             <Panel fullHeight>
               <Card>
-                <ScrollingContent
-                  className="shell-output"
-                  ref={div => {
-                    this.scrollingShellOutput = div;
-                  }}
-                >
-                  <pre
-                    ref={pre => {
-                      this.shellOutput = pre;
-                    }}
-                  >
-                    {this.props.shellOutput.map((shellOutputLine, index) => {
-                      return (
-                        <div key={index}>
-                          <span
-                            dangerouslySetInnerHTML={this.createMarkup(
-                              shellOutputLine
-                            )}
-                          />
-                          <br />
-                        </div>
-                      );
+                <ScrollingContent className={styles["shell-output"]} ref={(div) => { this.scrollingShellOutput = div; }}>
+                  <pre ref={(pre) => { this.shellOutput = pre; }}>
+                    {this.props.processes[this.props.currentProcess].output.map((shellOutputLine, index) => {
+                      return <div key={index}><span dangerouslySetInnerHTML={this.createMarkup(shellOutputLine)}/><br/></div>
                     })}
                   </pre>
                 </ScrollingContent>
@@ -180,7 +191,9 @@ ScriptsView.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    shellOutput: state.scripts.shellOutput
+    shellOutput: state.scripts.shellOutput,
+    processes: state.scripts.processes,
+    currentProcess: state.scripts.currentProcess,
   };
 }
 
@@ -194,7 +207,13 @@ function matchDispatchToProps(dispatch) {
     },
     restartShell: () => {
       dispatch(restartShell());
-    }
+    },
+    addProcess: () => {
+      dispatch(addProcess());
+    },
+    changeProcess: (index) => { 
+      dispatch(changeProcess(index)); 
+    },
   };
 }
 

@@ -1,53 +1,54 @@
-const webpack = require('webpack');
-const DashboardPlugin = require('webpack-dashboard/plugin');
+const webpack = require("webpack");
+const DashboardPlugin = require("webpack-dashboard/plugin");
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-module.exports = { 
+module.exports = {
   entry: {
-    app: './src/app'
-  },  
-  output: {
-    path: __dirname + '/dist',
-    filename: 'app.min.js'
+    app: "./src/app"
   },
-  devtool: 'eval',
+  output: {
+    path: __dirname + "/dist",
+    filename: "app.min.js"
+  },
+  devtool: "eval",
   module: {
     rules: [
       {
         test: /\.jsx?$/,
-        loader: 'babel-loader',
+        loader: "babel-loader",
         exclude: /node_modules/
       },
       {
         test: /\.(css|scss)$/,
-        loader: [
-          {
-            loader: 'style-loader'
-          },
-          {
-            loader: 'css-loader'
-          },
-          {
-            loader: 'postcss-loader',
-            options: {
-              plugins: []
-            }
-          },
-          {
-            loader: 'sass-loader'
-          }
-        ]
+        loader: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: [
+            {
+              loader: "css-loader",
+              query: {
+                modules: true,
+                sourceMap: true,
+                importLoaders: 2,
+                localIdentName: "[name]__[local]___[hash:base64:5]"
+              }
+            },
+            "sass-loader"
+          ]
+        })
       }
     ]
   },
   node: {
-    fs: 'empty'
+    fs: "empty"
   },
   plugins: [
     //new webpack.optimize.UglifyJsPlugin(),
+    new ExtractTextPlugin("style.css"),
+
     new DashboardPlugin()
   ],
   resolve: {
-    extensions: ['.js', '.jsx']
+    extensions: [".js", ".jsx"]
   },
-  target: 'electron-renderer'
-}
+  target: "electron-renderer"
+};

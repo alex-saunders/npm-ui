@@ -1,6 +1,6 @@
-@import '../assets/css/partials/theme';
+@import '../assets/css/partials/variables';
 
-.app-container {
+.appContainer {
   display: grid;
   grid-template-columns: 100%;
   grid-template-rows: 64px 1fr;
@@ -12,32 +12,7 @@
   overflow: hidden;
 }
 
-.mdc-toolbar {
-  background: transparent;
-  // box-shadow: 0px 2px 4px rgba(0,0,0,0.4);
-  grid-area: header;
-  -webkit-app-region: drag;
-}
-
-.mdc-tab-bar {
-  margin: 0;
-  height: 64px;
-  background-color: $primary-1;
-  box-shadow: 0px 2px 4px rgba(0,0,0,0.2);
-  border-radius: 0 5px 0 0;
-
-  --mdc-theme-text-primary-on-primary: $accent;
-}
-
-.mdc-tab a {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-
-.route-container {
+.routeContainer {
   grid-area: main;
   overflow: hidden;
   background: $primary-2;

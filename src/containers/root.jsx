@@ -7,9 +7,9 @@ import { TabBar, Tab } from "rmwc/Tabs";
 import ScriptsView from "./Scripts";
 import PackagesView from "./Packages";
 
-import "./styles.scss";
+import styles from "./styles.scss";
 
-class Root extends React.Component {
+export class Root extends React.Component {
   constructor(props) {
     super(props);
 
@@ -20,13 +20,14 @@ class Root extends React.Component {
 
   render() {
     return (
-      <div className="app-container">
+      <div className={styles.appContainer}>
         <Toolbar>
           <ToolbarRow>
             <TabBar
               activeTabIndex={this.state.activeTabIndex || 0}
               onChange={evt =>
-                this.setState({ activeTabIndex: evt.target.value })}
+                this.setState({ activeTabIndex: evt.target.value })
+              }
             >
               <Tab className="mdc-tab--active">
                 <Link to="/scripts" />
@@ -42,11 +43,19 @@ class Root extends React.Component {
 
         <Route
           path="/scripts"
-          render={() => <div className="route-container"><ScriptsView /></div>}
+          render={() => (
+            <div className={styles.routeContainer}>
+              <ScriptsView />
+            </div>
+          )}
         />
         <Route
           path="/packages"
-          render={() => <div className="route-container"><PackagesView /></div>}
+          render={() => (
+            <div className={styles.routeContainer}>
+              <PackagesView />
+            </div>
+          )}
         />
       </div>
     );

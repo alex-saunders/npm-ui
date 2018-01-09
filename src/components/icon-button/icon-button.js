@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 
 import { Button } from 'rmwc/Button';
 
-import './icon-button.scss';
+import styles from './icon-button.scss';
 
 class IconButton extends React.Component {
   render() {
     return (
-      <Button raised={this.props.raised} className="icon-button" onClick={this.props.onClick}>
+      <Button raised={this.props.raised} className={styles["icon-button"]} onClick={this.props.onClick}>
         {this.props.children}
       </Button>
     )

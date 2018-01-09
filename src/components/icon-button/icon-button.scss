@@ -1,6 +1,6 @@
-@import '../../theme';
+@import '../../assets/css/partials/variables';
 
-.mdc-button.icon-button {
+:global(.mdc-button).icon-button {
   width: 30px;
   min-width: 30px;
   height: 30px;
