@@ -17,10 +17,10 @@
     box-sizing: border-box;
   }
 
-  body {
-    overflow: auto;
-    background: $primary-2;
-  }
+body {
+  overflow: auto;
+  font-family: Roboto, sans-serif;
+}
 
   *, *:before, *:after {
     box-sizing: inherit;
@@ -33,6 +33,7 @@
   }
 
   pre {
+    user-select: text;
     font-family: 'Roboto Mono', monospace;
     font-size: 12px;
   }
