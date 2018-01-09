@@ -13,7 +13,7 @@
   position: relative;
   height: auto;
   width: 100%;
-  padding: 0 8px 0 0;
+  padding: 0 8px;
 }
 
 .list-item--icon {
@@ -53,40 +53,6 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-}
-
-.list-item--rightActions {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-
-  & > * {
-    margin-right: 8px;
-  }
-  & > *:last-child {
-    margin-right: 0;
-  }
-}
-
-.shell-select.mdc-select {
-  flex: 1;
-  margin-right: 16px;
-  --mdc-theme-text-primary-on-light: $accent;
-  
-  .mdc-select__surface {
-    background: none;
-  }
-
-  .mdc-select__label {
-    color: $accent;
-  }
-  .mdc-select__bottom-line {
-    background-color: $primary-1;
-    --mdc-theme-primary: $primary-1;
-  }
-  .mdc-list-item {
-    --mdc-theme-text-primary-on-light: $primary-3;
-  }
 }
 
 .shell-output {
