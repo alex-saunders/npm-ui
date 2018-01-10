@@ -8,10 +8,7 @@ import styles from './icon-button.scss';
 class IconButton extends React.Component {
   render() {
     return (
-      <Button
-        raised={this.props.raised}
-        className={`${styles["icon-button"]} ${this.props.className ? this.props.className : ""}`}
-        onClick={this.props.onClick}>
+      <Button raised={this.props.raised} className={styles["icon-button"]} onClick={this.props.onClick}>
         {this.props.children}
       </Button>
     )

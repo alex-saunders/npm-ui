@@ -3,7 +3,7 @@
 :global {
   @import "~material-components-web/dist/material-components-web";
   @import './partials/grid';
-  @import './mdc-overrides';
+  @import './theme';
   
   html, body {
     margin: 0;
@@ -17,10 +17,10 @@
     box-sizing: border-box;
   }
 
-  body {
-    overflow: auto;
-    font-family: Roboto, sans-serif;
-  }
+body {
+  overflow: auto;
+  font-family: Roboto, sans-serif;
+}
 
   *, *:before, *:after {
     box-sizing: inherit;
