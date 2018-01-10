@@ -1,76 +1,71 @@
 @import '../../assets/css/partials/variables';
 @import '../../assets/css/partials/grid';
 
-.list-container {
-  margin: 8px 0;
-}
+// .list-item {
+//   display: flex;
+//   flex-direction: row;
+//   align-items: center;
+//   justify-content: space-between;
+//   position: relative;
+//   height: auto;
+//   width: 100%;
+//   padding: 0 8px 0 0;
+// }
 
-.list-item {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  position: relative;
-  height: auto;
-  width: 100%;
-  padding: 0 8px 0 0;
-}
+// .list-item--actionContainer {
+//   display: flex;
+// }
 
-.list-item--icon {
-  padding: 0 16px 0 72px;
-}
+// .list-item--icon {
+//   padding: 0 16px 0 72px;
+// }
 
-.list-action {
-  display: flex;
-  align-items: center;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 16px;
-}
+// .list-action {
+//   display: flex;
+//   align-items: center;
+//   position: absolute;
+//   top: 0;
+//   bottom: 0;
+//   left: 16px;
+// }
 
-.list-text {
-  padding: 8px 0;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-transform: none;
-  text-align: left;
-}
+// .list-text {
+//   flex: 1;
+//   padding: 8px 0;
+//   width: 100%;
+//   display: flex;
+//   flex-direction: column;
+//   align-items: flex-start;
+//   text-transform: none;
+//   text-align: left;
+//   overflow: hidden;
+// }
 
-.list-text--title {
-  font-size: 16px;
-  line-height: 24px;
-  width: 100%;
-}
+// .list-text--title {
+//   font-size: 16px;
+//   line-height: 24px;
+//   width: 100%;
+// }
 
-.list-text--detail {
-  width: 100%;
-  font-size: 12px;
-  line-height: 16px;
-  height: 16px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
+// .list-text--detail {
+//   width: 100%;
+//   font-size: 12px;
+//   line-height: 16px;
+//   height: 16px;
+//   overflow: hidden;
+//   white-space: nowrap;
+//   text-overflow: ellipsis;
+// }
 
-.list-item--rightActions {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-
-  & > * {
-    margin-right: 8px;
-  }
-  & > *:last-child {
-    margin-right: 0;
-  }
+.process-option:not(:last-child) {
+  margin-right: 8px;
 }
 
 :global(.mdc-select).shell-select {
   flex: 1;
   margin-right: 16px;
+  width: 100%;
+
   --mdc-theme-text-primary-on-light: $accent;
   
   :global(.mdc-select__surface) {
@@ -113,3 +108,50 @@
   background-color: $primary-3;
   --mdc-theme-text-primary-on-primary: $accent;
 } 
+
+.newScript-card {
+  margin-bottom: 16px;
+}
+.newScript-wrapper {
+  display: flex;
+  flex-direction: row;
+  padding: 0px;
+}
+.newScript-inputContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.newScript-ctaContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 0 0 16px;
+}
+:global(.mdc-button).newScript-cta {
+  background-color: $primary-2;
+  --mdc-theme-text-primary-on-primary: $accent;
+
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+
+  svg {
+    fill: $accent;
+    margin-right: 4px;
+  }
+}
+:global(.mdc-text-field).newScript-name, :global(.mdc-text-field).newScript-detail {
+  margin: 4px 0 0 0 !important;
+
+  --mdc-theme-text-primary-on-light: $accent-dark;
+  --mdc-theme-primary: $primary-1;
+
+  :global(.mdc-text-field__label) {
+    color: $accent-dark;
+  }
+
+  :global(.mdc-text-field__input) {
+    border-bottom: 1px solid $primary-2;
+  }
+}
