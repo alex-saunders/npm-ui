@@ -65,7 +65,7 @@
   height: 100%;
   overflow: auto;
   background: #212121;
-  color: $accent;
+  color: $accent-500;
   padding: 8px 8px;
 
   & pre {
@@ -78,12 +78,12 @@
 }
 
 .mdc-card .mdc-button {
-  --mdc-theme-primary: $accent;
+  --mdc-theme-primary: $accent-500;
 }
 
 .mdc-button.restart-button {
-  background-color: $primary-3;
-  --mdc-theme-text-primary-on-primary: $accent;
+  background-color: $primary-900;
+  --mdc-theme-text-primary-on-primary: $accent-500;
 } 
 
 .newScript-card {
@@ -106,29 +106,29 @@
   padding: 0 0 0 16px;
 }
 :global(.mdc-button).newScript-cta {
-  background-color: $primary-2;
-  --mdc-theme-text-primary-on-primary: $accent;
+  background-color: $primary-700;
+  --mdc-theme-text-primary-on-primary: $accent-500;
 
   display: flex;
   align-items: center;
   padding: 0 8px;
 
   svg {
-    fill: $accent;
+    fill: $accent-500;
     margin-right: 4px;
   }
 }
 :global(.mdc-text-field).newScript-name, :global(.mdc-text-field).newScript-detail {
   margin: 4px 0 0 0 !important;
 
-  --mdc-theme-text-primary-on-light: $accent-dark;
-  --mdc-theme-primary: $primary-1;
+  --mdc-theme-text-primary-on-light: $accent-700;
+  --mdc-theme-primary: $accent-700;
 
   :global(.mdc-text-field__label) {
-    color: $accent-dark;
+    color: $accent-700;
   }
 
   :global(.mdc-text-field__input) {
-    border-bottom: 1px solid $primary-2;
+    border-bottom: 1px solid $primary-700;
   }
 }

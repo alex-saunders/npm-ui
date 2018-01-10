@@ -10,10 +10,10 @@
   padding: 0;
   border-radius: 50%;
 
-  background-color: $primary-3;
-  --mdc-theme-text-primary-on-primary: $accent;
+  background-color: $primary-900;
+  --mdc-theme-text-primary-on-primary: $accent-500;
 
   > svg {
-    fill: $accent;
+    fill: $accent-500;
   }
 }

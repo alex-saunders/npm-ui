@@ -161,6 +161,7 @@ export class ScriptsView extends React.Component {
         </div>
         <div className={styles["grid-item"]}>
           <Panel fullHeight>
+            <Card> 
             <List>
               <ListItem>
                 <ListItemTitle>
@@ -201,6 +202,7 @@ export class ScriptsView extends React.Component {
                 </ScrollingContent>
               </Card>
             </Panel>
+            </Card>
           </Panel>
         </div>
       </div>

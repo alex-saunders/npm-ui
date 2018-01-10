@@ -5,20 +5,20 @@
   margin-right: 16px;
   width: 100%;
 
-  --mdc-theme-text-primary-on-light: $accent;
+  --mdc-theme-text-primary-on-light: $accent-500
   
   :global(.mdc-select__surface) {
     background: none;
   }
 
   :global(.mdc-select__label) {
-    color: $accent;
+    color: $accent-500
   }
   :global(.mdc-select__bottom-line) {
-    background-color: $primary-1;
-    --mdc-theme-primary: $primary-1;
+    background-color: $primary-500;
+    --mdc-theme-primary: $primary-500;
   }
   :global(.mdc-list-item) {
-    --mdc-theme-text-primary-on-light: $primary-3;
+    --mdc-theme-text-primary-on-light: $primary-900;
   }
 }
