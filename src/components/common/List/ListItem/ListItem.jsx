@@ -17,25 +17,42 @@ class ListItem extends React.Component {
     }
 
     // console.log(props.children)
+    
+    
+    this.state = this._getChildren(props);
+  }
+
+  _getChildren(props) {
+    let defaultChildrenState = {
+      icon: null,
+      title: null,
+      subtitle: null,
+      endDetail: null
+    }
+
     props.children.forEach((child) => {
       switch (child.type) {
         case ListItemIcon:
-          defaultState.icon = child;
+          defaultChildrenState.icon = child;
           break;
         case ListItemTitle:
-          defaultState.title = child;
+          defaultChildrenState.title = child;
           break;
         case ListItemSubtitle:
-          defaultState.subtitle = child;
+          defaultChildrenState.subtitle = child;
           break;
         case ListItemEndDetail:
-          defaultState.endDetail = child;
+          defaultChildrenState.endDetail = child;
           break;
         default:
       }
     });
-    
-    this.state = defaultState;
+
+    return defaultChildrenState;
+  }
+  
+  componentWillReceiveProps(nextProps) {
+    this.setState(this._getChildren(nextProps));
   }
 
   render() {
@@ -97,6 +114,10 @@ class ListItem extends React.Component {
 }
 
 class ListItemTitle extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       this.props.children
@@ -105,6 +126,10 @@ class ListItemTitle extends React.Component {
 }
 
 class ListItemSubtitle extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       this.props.children
@@ -113,6 +138,10 @@ class ListItemSubtitle extends React.Component {
 }
 
 class ListItemIcon extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       this.props.children
@@ -121,6 +150,10 @@ class ListItemIcon extends React.Component {
 }
 
 class ListItemEndDetail extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       this.props.children

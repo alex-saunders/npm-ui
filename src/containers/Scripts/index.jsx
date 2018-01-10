@@ -18,19 +18,20 @@ import { Button } from "rmwc/Button";
 import { Icon } from "rmwc/Icon";
 import { Card, CardPrimary, CardTitle, CardSubtitle, CardActions, CardAction } from "rmwc/Card";
 import { Typography } from "rmwc/Typography";
-import { Select } from 'rmwc/Select';
 import { TextField } from 'rmwc/TextField'; 
 
-import Panel from "../../components/Panel";
-import ScrollingContent from "../../components/ScrollingContent";
-import IconButton from '../../components/icon-button/icon-button';
+import Panel from "../../components/common/Panel";
+import ScrollingContent from "../../components/common/ScrollingContent";
+import IconButton from '../../components/common/icon-button/icon-button';
 import { 
   List, 
   ListItem, 
   ListItemIcon,
   ListItemTitle, 
   ListItemSubtitle,
-  ListItemEndDetail } from '../../components/List/List';
+  ListItemEndDetail } from '../../components/common/List/List';
+
+  import ProcessSelect from '../../components/ProcessSelect';
 
 import styles from "./styles.scss";
 import { ListItemText } from "rmwc/List";
@@ -41,7 +42,7 @@ export class ScriptsView extends React.Component {
 
     this.state = {
       scripts: {},
-      shellOutput: []
+      shellOutput: [],
     };
 
     // AnsiHTML.setColors({
@@ -61,9 +62,13 @@ export class ScriptsView extends React.Component {
   componentDidMount() {
     this.fetchScripts().then(scripts => {
       this.setState({
-        scripts: scripts.scripts
+        scripts: scripts.scripts,
       });
     });
+  }
+
+  componentDidUpdate() {
+    this.scrollingShellOutput.scrollToBottom();
   }
 
   execCommand(script) {
@@ -71,10 +76,6 @@ export class ScriptsView extends React.Component {
       script: script,
       process: this.props.currentProcess
     });
-  }
-
-  changeProcess = (e) => {
-    this.props.changeProcess(e.target.value);
   }
 
   async fetchScripts() {
@@ -99,16 +100,7 @@ export class ScriptsView extends React.Component {
     return { __html: `${AnsiHTML(shellOutputLine)}` };
   }
 
-  componentDidUpdate() {
-    this.scrollingShellOutput.scrollToBottom();
-  }
-
   render() {
-    const selectOptions = this.props.processes.map((process, index) => { 
-        return { label: process.label, value: index} 
-      }
-    )
-
     return (
       <div className={styles["grid"]}>
         <div className={styles["grid-item"]}>
@@ -122,12 +114,6 @@ export class ScriptsView extends React.Component {
                       <TextField label="Name" className={styles["newScript-name"]} />
                       <TextField label="Action" className={styles["newScript-detail"]} />
                     </div>
-                    {/* <div className={styles["newScript-ctaContainer"]}>
-                      <Button className={styles["newScript-cta"]}>
-                        <svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/><path d="M0 0h24v24H0z" fill="none"/></svg>
-                        Add Script
-                      </Button>
-                    </div> */}
                   </div>
                 </CardPrimary>
                 <CardActions>
@@ -178,13 +164,12 @@ export class ScriptsView extends React.Component {
             <List>
               <ListItem>
                 <ListItemTitle>
-                  <Select
-                    label="Process"
-                    options={selectOptions}
-                    value={`${this.props.currentProcess}`}
-                    onChange={this.changeProcess}
-                    className={styles["shell-select"]}
-                  />
+                  <ProcessSelect
+                    processes={this.props.processes}
+                    currentProcess={this.props.currentProcess}
+                    changeProcess={this.props.changeProcess}
+                  >
+                  </ProcessSelect>
                 </ListItemTitle>
                 <ListItemEndDetail>
                   <IconButton raised
