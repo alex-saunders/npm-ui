@@ -12,8 +12,7 @@
 
 
 .mdc-toolbar {
-    box-shadow: 0px 2px 4px rgba(0,0,0,0.4);
-    background-color: $primary-1;
+    background: none;
     grid-area: header;
     -webkit-app-region: drag;
 }
@@ -21,6 +20,8 @@
 .mdc-tab-bar {
     margin: 0;
     height: 64px;
+    background-color: $primary-1;
+    border-radius: 5px 5px 0 0;
 
     --mdc-theme-text-primary-on-primary: $accent;
 }
@@ -34,6 +35,10 @@
 }
 
 .mdc-card {
-height: 100%;
-background: $primary-3;
+    height: 100%;
+    background: $primary-3;
+}
+
+.mdc-card__title {
+    --mdc-theme-text-primary-on-light: $accent;
 }
