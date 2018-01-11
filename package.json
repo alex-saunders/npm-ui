@@ -7,12 +7,14 @@
     "start": "electron .",
     "webpack-watch": "webpack -w",
     "dev": "concurrently \"npm start\" \"npm run webpack-watch\"",
-    "test": "jest"
+    "test": "jest",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,json,css,md}": ["prettier --write", "git add"]
   },
   "repository": "",
-  "keywords": [
-    "Electron"
-  ],
+  "keywords": ["Electron"],
   "author": "Alex Saunders",
   "license": "MIT",
   "devDependencies": {
@@ -36,7 +38,9 @@
     "sass-loader": "^6.0.6",
     "style-loader": "^0.19.1",
     "webpack": "^3.10.0",
-    "webpack-dashboard": "^1.0.2"
+    "webpack-dashboard": "^1.0.2",
+    "husky": "^0.14.3",
+    "lint-staged": "^6.0.0"
   },
   "dependencies": {
     "ansi-html": "0.0.7",
@@ -47,6 +51,7 @@
     "express": "^4.16.2",
     "material-components-web": "^0.27.0",
     "node-sass": "^4.7.2",
+    "prettier": "^1.10.2",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
@@ -60,11 +65,10 @@
   },
   "jest": {
     "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
+        "<rootDir>/__mocks__/fileMock.js",
       "\\.(scss|css|less)$": "<rootDir>/__mocks__/styleMock.js"
     },
-    "setupFiles": [
-      "<rootDir>/src/setupTests.js"
-    ]
+    "setupFiles": ["<rootDir>/src/setupTests.js"]
   }
 }
