@@ -7,7 +7,8 @@
     "start": "electron .",
     "webpack-watch": "webpack -w",
     "dev": "concurrently \"npm start\" \"npm run webpack-watch\"",
-    "test": "jest"
+    "test": "jest",
+    "start:dev": "webpack-dev-server"
   },
   "repository": "",
   "keywords": [
@@ -27,16 +28,17 @@
     "css-loader": "^0.28.7",
     "electron": "~1.7.8",
     "electron-reload": "^1.2.2",
-    "extract-text-webpack-plugin": "^3.0.2",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
+    "extract-text-webpack-plugin": "^3.0.2",
     "jest": "^22.0.4",
     "postcss-loader": "^2.0.9",
     "redux-logger": "^3.0.6",
     "sass-loader": "^6.0.6",
     "style-loader": "^0.19.1",
     "webpack": "^3.10.0",
-    "webpack-dashboard": "^1.0.2"
+    "webpack-dashboard": "^1.0.2",
+    "webpack-dev-server": "^2.11.0"
   },
   "dependencies": {
     "ansi-html": "0.0.7",
