@@ -31,7 +31,7 @@ import {
   ListItemSubtitle,
   ListItemEndDetail } from '../../components/common/List/List';
 
-  import ProcessSelect from '../../components/ProcessSelect';
+import ProcessSelect from '../../components/ProcessSelect';
 
 import styles from "./styles.scss";
 import { ListItemText } from "rmwc/List";

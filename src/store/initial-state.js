@@ -2,7 +2,7 @@ export default {
     scriptsInitialState: {
         processes: [
             {
-                label: '1: bash',
+                label: `1: ${process.cwd()}`,
                 output: []
             }
         ],

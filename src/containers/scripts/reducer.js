@@ -28,7 +28,7 @@ export default function (state = initialStates.scriptsInitialState, action) {
     }
     case 'ADD_PROCESS': {
       const newProcess = {
-        label: `${state.processes.length + 1}: bash`,
+        label: `${state.processes.length + 1}: ${process.cwd()}`,
         output: []
       }
       return Object.assign({}, state,
