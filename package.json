@@ -8,7 +8,7 @@
     "webpack-watch": "webpack -w",
     "dev": "concurrently \"npm start\" \"npm run webpack-watch\"",
     "test": "jest",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
     "start:dev": "webpack-dev-server"
   },
   "lint-staged": {
@@ -41,7 +41,7 @@
     "webpack": "^3.10.0",
     "webpack-dashboard": "^1.0.2",
     "husky": "^0.14.3",
-    "lint-staged": "^6.0.0"
+    "lint-staged": "^6.0.0",
     "webpack-dev-server": "^2.11.0"
   },
   "dependencies": {
