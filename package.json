@@ -9,6 +9,7 @@
     "dev": "concurrently \"npm start\" \"npm run webpack-watch\"",
     "test": "jest",
     "precommit": "lint-staged"
+    "start:dev": "webpack-dev-server"
   },
   "lint-staged": {
     "*.{js,json,css,md}": ["prettier --write", "git add"]
@@ -29,9 +30,9 @@
     "css-loader": "^0.28.7",
     "electron": "~1.7.8",
     "electron-reload": "^1.2.2",
-    "extract-text-webpack-plugin": "^3.0.2",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
+    "extract-text-webpack-plugin": "^3.0.2",
     "jest": "^22.0.4",
     "postcss-loader": "^2.0.9",
     "redux-logger": "^3.0.6",
@@ -41,6 +42,7 @@
     "webpack-dashboard": "^1.0.2",
     "husky": "^0.14.3",
     "lint-staged": "^6.0.0"
+    "webpack-dev-server": "^2.11.0"
   },
   "dependencies": {
     "ansi-html": "0.0.7",

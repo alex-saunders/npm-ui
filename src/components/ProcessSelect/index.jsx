@@ -31,13 +31,15 @@ class ProcessSelect extends React.Component {
   }
 
   render() {
+    console.log(process);
+
     return (
       <Select
         label="Process"
         options={this.state.selectOptions}
         value={`${this.props.currentProcess}`}
         onChange={this._changeProcess}
-        className={styles["shell-select"]}
+        className={styles["process-select"]}
       />
     );
   }
