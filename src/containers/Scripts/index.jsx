@@ -117,32 +117,6 @@ export class ScriptsView extends React.Component {
   setScrollingShellOutput(div) {
     this.scrollingShellOutput = div;
   }
-
-  render() {
-    return (
-      <div className={styles["grid"]}>
-        <div className={styles["grid-item"]}>
-          <ScriptsList
-            scripts={this.state.scripts}
-            execCommand={this.execCommand}
-          />
-        </div>
-        <div className={styles["grid-item"]}>
-          <ProcessPanel 
-              processes={this.props.processes}
-              currentProcess={this.props.currentProcess}
-              changeProcess={this.props.changeProcess}
-              addProcess={this.props.addProcess}
-              restartShell={this.props.restartShell}
-              shellOutput={this.props.shellOutput}
-              scrollingShellOutput={this.scrollingShellOutput}
-              createMarkup={this.createMarkup}
-              setScrollingShellOutput={this.setScrollingShellOutput}
-          />
-        </div>
-      </div>
-    );
-  }
 }
 
 ScriptsView.propTypes = {

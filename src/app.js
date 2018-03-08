@@ -1,23 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Provider } from "react-redux";
 import { MemoryRouter } from "react-router";
+import { Provider } from "unstated";
 
-import "./assets/css/base.scss";
-
-import Root from "./containers/root";
-
-import configureStore from "./redux/configure-store";
+import "./assets/styles/base.scss";
+import Root from "./layout/Root";
 
 const rootEl = document.getElementById("root");
 
-const store = configureStore();
-
 ReactDOM.render(
-  <Provider store={store}>
-    <MemoryRouter initialEntries={["/scripts"]}>
+  <MemoryRouter initialEntries={["/scripts"]}>
+    <Provider>
       <Root />
-    </MemoryRouter>
-  </Provider>,
+    </Provider>
+  </MemoryRouter>,
   rootEl
 );
